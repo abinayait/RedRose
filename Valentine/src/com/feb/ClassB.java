@@ -7,4 +7,8 @@ public class ClassB {
 		System.out.println(z);
 	}
 	
+	public static void multiply(int x,int y) {
+		int z=x*y;
+		System.out.println(z);
+	}
 }
