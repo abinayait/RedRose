@@ -38,9 +38,16 @@ public class Table_ex {
 		
 	WebElement table=driver.findElement(By.xpath("https://www.livechennai.com/gold_silverrate.asp"));
 		js.executeScript("arguments[0].scrollIntoView()", table);
-	*/
+	/9+*/
+	}
+		
+		
+		public void textbox() {
 	WebElement workfromhome=driver.findElement(By.xpath("//a[@href='https://www.livechennai.com/work_from_home_genuine.asp']"));
 	workfromhome.click();
+	
+	
+		}
 //	Thread.sleep(2000);
 /*	Actions a = new Actions(driver);
 			a.sendKeys(Keys.PAGE_DOWN).build().perform();
@@ -54,5 +61,5 @@ public class Table_ex {
 	
 	
 	
-	}
+	
 }
