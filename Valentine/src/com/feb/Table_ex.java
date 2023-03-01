@@ -17,15 +17,23 @@ public class Table_ex {
 		driver.manage().window().maximize();
 	}
 
-	public void table(String gdate) throws InterruptedException {
+	public String table(String gdate) throws InterruptedException {
 		
 		
 		//Actions a = new Actions(driver);
 		//a.sendKeys(Keys.PAGE_DOWN).build().perform();
 		//div[@id='gold-tit']/following-sibling::*/tbody/tr/td/*[contains(text(),'25')]
-		String day="//div[@id='gold-tit']/following-sibling::*/tbody/tr/td/*[contains(text(),'"+ gdate +"')]/ancestor::tr/td[2]";
+		
+		try {
+		String day="//div[@id='gold-tit']/following-sibling::*/tbody/tr/td[1]/*[starts-with(normalize-space(),'"+ gdate +"')]/ancestor::tr/td[2]";
 		WebElement price=driver.findElement(By.xpath(day));
-		System.out.println(gdate+ price.getText());
+		System.out.println(gdate +"-" + price.getText());
+		return price.getText();
+		}
+		catch(org.openqa.selenium.NoSuchElementException e) {
+			System.out.println(gdate +"-" +" no price available");
+			return "";
+		}
 	//	WebElement day25=driver.findElement(By.xpath("//div[@id='gold-tit']/following-sibling::*/tbody/tr[6]/td[1]"));
 	//	System.out.println("..");
 	//	WebElement day19=driver.findElement(By.xpath("//div[@id='gold-tit']/following-sibling::*/tbody/tr[12]/td[1]"));
@@ -40,7 +48,7 @@ public class Table_ex {
 		js.executeScript("arguments[0].scrollIntoView()", table);
 	/9+*/
 	}
-		
+	//	pu
 		
 		public void textbox() {
 	WebElement workfromhome=driver.findElement(By.xpath("//a[@href='https://www.livechennai.com/work_from_home_genuine.asp']"));
