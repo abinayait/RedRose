@@ -1,5 +1,10 @@
 package com.feb;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -11,13 +16,17 @@ import org.openqa.selenium.interactions.Actions;
 public class Table_ex {
 
 	WebDriver driver;
+	Map<WebElement, Double> all_date=new HashMap<>();
+	
+	
+	
 	public void openWindow() {
 	   driver=new ChromeDriver();
 		driver.get("https://www.livechennai.com/gold_silverrate.asp");
 		driver.manage().window().maximize();
 	}
 
-	public String table(String gdate) throws InterruptedException {
+	public String tablegold(String gdate) throws InterruptedException {
 		
 		
 		//Actions a = new Actions(driver);
@@ -50,12 +59,24 @@ public class Table_ex {
 	}
 	//	pu
 		
+	
+	public List<WebElement> tablesilver() {
+		List<WebElement>date=driver.findElements(By.xpath("//tbody/tr[1]/td[2][contains(text(),\"Silver\")]/ancestor::tbody[1]//td[1]"+""));
+		
+		return date; 
+	}
+	public String tablesilverValue() {
+		String str=driver.findElement(By.xpath("//tbody/tr[1]/td[2][contains(text(),\"Silver\")]/ancestor::tbody[1]//td[3]")).getText();
+		
+		return str; 
+	}
 		public void textbox() {
 	WebElement workfromhome=driver.findElement(By.xpath("//a[@href='https://www.livechennai.com/work_from_home_genuine.asp']"));
 	workfromhome.click();
-	
-	
 		}
+		
+		
+		
 //	Thread.sleep(2000);
 /*	Actions a = new Actions(driver);
 			a.sendKeys(Keys.PAGE_DOWN).build().perform();
